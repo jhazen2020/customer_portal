@@ -32,7 +32,8 @@
   flex: 1;
   display: flex;
   align-items: center;
-
+  font-size: xx-large;
+  color: white;
   height: 100%;
 
   /* responsive */

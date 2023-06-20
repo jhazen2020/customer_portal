@@ -32,8 +32,6 @@
 }
 
 .page-footer-grid__info {
-  display: grid;
-
   /* responsive */
 
   grid-template-columns: 1.5fr 1fr auto;
@@ -52,7 +50,7 @@
 .page-footer-info__message {
   /* responsive */
 
-  text-align: left;
+  text-align: center;
 }
 
 .page-footer-message__headline {

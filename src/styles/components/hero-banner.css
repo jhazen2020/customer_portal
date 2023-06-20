@@ -18,6 +18,7 @@
 .hero-banner--yellow-mandarine {
   background: var(--yellow-mandarine-gradient);
 }
+
 .hero-banner--pink-yellow {
   background: var(--pink-yellow-gradient);
 }
@@ -40,14 +41,14 @@
   align-items: center;
 
   background-color: var(--white);
-  border-radius: 50%;
+  border-radius: 100%;
 
   box-shadow: 0 2px 4px rgb(0 0 0 / 12%);
 
   /* responsive */
 
-  width: 12.8rem;
-  height: 12.8rem;
+  width: 15.8rem;
+  height: 15.8rem;
 }
 
 .hero-banner__image {

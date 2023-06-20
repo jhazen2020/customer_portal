@@ -1,27 +1,17 @@
 import React from "react";
 
 export const HeroBanner = () => {
-  const logo = "https://cdn.auth0.com/blog/developer-hub/react-logo.svg";
+  const logo = "https://djkmbr0egwze9.cloudfront.net/jesse_hazen_square.svg";
 
   return (
-    <div className="hero-banner hero-banner--pink-yellow">
+    <div className="hero-banner hero-banner--blue-aqua">
       <div className="hero-banner__logo">
         <img className="hero-banner__image" src={logo} alt="React logo" />
       </div>
-      <h1 className="hero-banner__headline">Hello, React World!</h1>
+      <h1 className="hero-banner__headline">Welcome!</h1>
       <p className="hero-banner__description">
-        This is a sample application that demonstrates the authentication flow
-        for React apps using <strong>Auth0</strong>.
+        This website is made to demostrate some software engineering abilities. Features include creating, updating, deleting, authenticating and authorizating users. This Single Page Application is powered by AWS, and Auth0. The backend is built as a container-based microservice. Feel free to check out the code to get a better look.
       </p>
-      <a
-        id="code-sample-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://developer.auth0.com/resources/code-samples/spa/react/basic-authentication"
-        className="button button--secondary"
-      >
-        Check out the React code sample →
-      </a>
     </div>
   );
 };

@@ -10,6 +10,9 @@ export const ProfilePage = () => {
     return null;
   }
 
+  const emaiVerified = user.email_verified ? '' : <p><span><strong>Email has not been verified. Please check your email inbox.</strong></span></p>
+
+
   return (
     <PageLayout>
       <div className="content-layout">
@@ -23,7 +26,10 @@ export const ProfilePage = () => {
               information of an authenticated user.
             </span>
             <span>
-              <strong>Only authenticated users can access this page.</strong>
+              <strong>
+                Only authenticated users can access this page.
+              </strong>
+              {emaiVerified}
             </span>
           </p>
           <div className="profile-grid">

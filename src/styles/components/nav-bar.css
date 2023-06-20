@@ -29,12 +29,10 @@
 .nav-bar__brand {
   display: flex;
   align-items: center;
-
-  height: 100%;
-
+  font-size: xx-large;
+  color: white;
+  height: 100px;
   /* responsive */
-
-  margin-right: 64px;
 }
 
 .nav-bar__link {

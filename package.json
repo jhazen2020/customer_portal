@@ -1,5 +1,5 @@
 {
-  "name": "spa_react_javascript_hello-world",
+  "name": "customer_portal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +11,7 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "cross-env PORT=4040 react-scripts start",
+    "start": "PORT=4040 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -42,6 +42,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.1.0",
     "json-server": "^0.17.0",
     "prettier": "^2.7.1"
