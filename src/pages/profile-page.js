@@ -22,12 +22,11 @@ export const ProfilePage = () => {
         <div className="content__body">
           <p id="page-description">
             <span>
-              You can use the <strong>ID Token</strong> to get the profile
-              information of an authenticated user.
+              This information comes from the <strong>ID Token</strong> after a user has logged in.
             </span>
             <span>
               <strong>
-                Only authenticated users can access this page.
+                Only logged in users can access this page.
               </strong>
               {emaiVerified}
             </span>
@@ -46,7 +45,7 @@ export const ProfilePage = () => {
             </div>
             <div className="profile__details">
               <CodeSnippet
-                title="Decoded ID Token"
+                title="Your login information."
                 code={JSON.stringify(user, null, 2)}
               />
             </div>
