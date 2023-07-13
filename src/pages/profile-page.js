@@ -3,16 +3,19 @@ import React from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 
+
 export const ProfilePage = () => {
-  const { user } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
 
   if (!user) {
     return null;
   }
 
   const emaiVerified = user.email_verified ? '' : <p><span><strong>Email has not been verified. Please check your email inbox.</strong></span></p>
-
-
+  getAccessTokenSilently().then((accessToken)=>{
+    localStorage.setItem('token', accessToken);
+  });
+  
   return (
     <PageLayout>
       <div className="content-layout">
@@ -45,8 +48,8 @@ export const ProfilePage = () => {
             </div>
             <div className="profile__details">
               <CodeSnippet
-                title="Your login information."
-                code={JSON.stringify(user, null, 2)}
+                title="Decoded ID Token"
+                snippetId="profile"
               />
             </div>
           </div>
