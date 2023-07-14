@@ -48,7 +48,7 @@ export const ProfilePage = () => {
             </div>
             <div className="profile__details">
               <CodeSnippet
-                title="Decoded ID Token"
+                title="Update Your Profile Information."
                 snippetId="profile"
               />
             </div>

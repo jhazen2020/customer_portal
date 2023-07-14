@@ -41,15 +41,9 @@ export const AdminPage = () => {
         <div className="content__body">
           <p id="page-description">
             <span>
-              This page retrieves an <strong>admin message</strong> from an
-              external API.
-            </span>
-            <span>
-              <strong>
-                Only authenticated users with the{" "}
-                <code>read:admin-messages</code> permission should access this
-                page.
-              </strong>
+              This page allows an admin to view all users. No user will see your actual information. 
+              Each person on the list will show up with fake user data except the user that is the same
+              as the logged in user.
             </span>
           </p>
           <CodeSnippet title="Admin Message" code={message} />

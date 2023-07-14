@@ -17,16 +17,17 @@ export function ToastSuccessContainer(){
    ></ToastContainer> 
     )
 }
-export function ToastSuccess(message){
-    const toastConfig = {
-        position: "bottom-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        };
-    return toast.success(message, toastConfig)
-}
+
+const toastConfig = {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    };
+
+export const ToastSuccess = (message)=> toast.success(message, toastConfig);
+export const ToastError = (message)=> toast.error(message, toastConfig);
