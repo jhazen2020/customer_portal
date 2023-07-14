@@ -1,4 +1,4 @@
-import { ToastSuccessContainer, ToastSuccess } from "./toast";
+import { ToastSuccessContainer, ToastSuccess, ToastError } from "./toast";
 import { useMutation, gql, useQuery } from "@apollo/client";
 
 export function UserInfoForm() {
@@ -22,8 +22,8 @@ export function UserInfoForm() {
   `;
 
   const userData = useQuery(GET_USER, {variables: {id: 4}});
-  console.log(userData, "hi");
-  const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER, {
+
+  const [updateUser] = useMutation(UPDATE_USER, {
     variables: {
       input: {
         id: 4,
@@ -34,23 +34,27 @@ export function UserInfoForm() {
       },
     },
   });
-  if (error) console.log("error on update.");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { firstName, lastName, phone, email } = e.target.elements;
-    updateUser({
-      variables: {
-        input: {
-          id: 4,
-          firstName: firstName.value,
-          lastName: lastName.value,
-          phoneNumber: phone.value,
-          email: email.value,
+  const handleSubmit = async (e) => {
+    try{
+      e.preventDefault();
+      const { firstName, lastName, phone, email } = e.target.elements;
+      await updateUser({
+        variables: {
+          input: {
+            id: 4,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            phoneNumber: phone.value,
+            email: email.value,
+          },
         },
-      },
-    });
-    ToastSuccess("Successfully Updated!");
+      });
+      ToastSuccess("Successfully Updated!");
+    }catch(e){
+      ToastError('Failed to Update User.')
+      console.log(e);
+    }
   };
 
   return (
@@ -106,7 +110,7 @@ export function UserInfoForm() {
             ></input>
           </li>
           <li className="form-row">
-            <button type="submit">Update Data</button>
+            <button className="submit" type="submit">Update Data</button>
           </li>
         </ul>
       </form>

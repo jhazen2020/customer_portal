@@ -31,3 +31,7 @@
 .form-row > input {
   flex: 2;
 }
+.submit{
+  color: white;
+  background: black;
+}
