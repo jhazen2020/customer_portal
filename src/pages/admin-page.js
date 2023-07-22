@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
-import { getAdminResource } from "../services/message.service";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AdminPage = () => {
-  const [message, setMessage] = useState("");
+  const { user } = useAuth0();
 
-  useEffect(() => {
-    let isMounted = true;
-
-    const getMessage = async () => {
-      const { data, error } = await getAdminResource();
-
-      if (!isMounted) {
-        return;
-      }
-
-      if (data) {
-        setMessage(JSON.stringify(data, null, 2));
-      }
-
-      if (error) {
-        setMessage(JSON.stringify(error, null, 2));
-      }
-    };
-
-    getMessage();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  if (!user) {
+    return null;
+  }
 
   return (
     <PageLayout>
@@ -46,7 +24,11 @@ export const AdminPage = () => {
               as the logged in user.
             </span>
           </p>
-          <CodeSnippet title="Admin Message" code={message} />
+          {user.email_verified ? <CodeSnippet
+                title="Users List"
+                snippetId="users_list"
+              /> :
+              <div><span>Please Verify your email to see the users' list.</span></div>}
         </div>
       </div>
     </PageLayout>

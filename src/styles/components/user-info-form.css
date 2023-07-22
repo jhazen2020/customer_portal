@@ -12,26 +12,47 @@
   border-radius: 3px;
 }
 
-.form{
+.form {
   list-style-type: none;
-    padding: 0;
-    border-radius: 3px;
+  padding: 0;
+  border-radius: 3px;
 }
 
-.form-row {
+.form-row-left {
   display: flex;
   justify-content: flex-end;
   padding: 0.5em;
 }
 
-.form-row > label {
+.form-row-right {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5em;
+}
+
+.form-row-left > label {
   padding: 0.5em 1em 0.5em 0;
   flex: 1;
 }
-.form-row > input {
+.form-row-left > input {
   flex: 2;
 }
-.submit{
+.submit {
   color: white;
   background: black;
+}
+.container-user-delete-button {
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+.container-user-delete-button .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+  margin: 0.5rem;
+}
+#delete-user-button {
+  color: black;
+  background: rgb(203, 48, 48);
+  width: 115px;
 }

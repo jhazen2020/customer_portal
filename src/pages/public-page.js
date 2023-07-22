@@ -47,7 +47,7 @@ export const PublicPage = () => {
               <strong>About me.</strong>
             </span>
           </p>
-          <CodeSnippet title="Public Message" code={message} />
+          <CodeSnippet title="Public Message" />
         </div>
       </div>
     </PageLayout>
