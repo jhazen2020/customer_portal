@@ -152,3 +152,18 @@ code {
     overflow: hidden;
   }
 }
+
+.inputError {
+  color: #bf1650;
+}
+
+.inputError::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+.pagination-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -5,6 +5,7 @@ import { App } from "./app";
 import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./components/apollo-client"
+
 import "./styles/styles.css";
 const container = document.getElementById("root");
 const root = createRoot(container);

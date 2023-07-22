@@ -1,15 +1,182 @@
-import { ToastSuccessContainer, ToastSuccess, ToastError } from "./toast";
 import { useMutation, gql, useQuery } from "@apollo/client";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+import _ from "lodash";
+import { Container, Row, Col } from "react-bootstrap";
+import { DeleteUser } from "./buttons/delete-user-button";
+import { ToastSuccess, ToastError } from "./toast";
+import { useAuth0 } from "@auth0/auth0-react";
 
-export function UserInfoForm() {
+const UserForm = ({ user, onSubmit }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues: user, criteriaMode: "all" });
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <ul className="wrapper">
+              <li className="form-row-left">
+                <label forhtml="firstName" className="user-input-label">
+                  First Name:
+                </label>
+                <input
+                  {...register("firstName", {
+                    required: { value: true, message: "First name required." },
+                    minLength: {
+                      value: 2,
+                      message: "First name must be at least 2 character long.",
+                    },
+                  })}
+                  id="firstName"
+                  className="user-input"
+                  name="firstName"
+                ></input>
+              </li>
+
+              <li className="form-row-left">
+                <label forhtml="lastName" className="user-input-label">
+                  Last Name:
+                </label>
+                <input
+                  {...register("lastName", {
+                    required: { value: true, message: "Last name required." },
+                    minLength: {
+                      value: 2,
+                      message: "Last name must be at least 2 character long.",
+                    },
+                  })}
+                  id="lastName"
+                  className="user-input"
+                  name="lastName"
+                ></input>
+              </li>
+              <li className="form-row-left">
+                <label forhtml="email" className="user-input-label">
+                  Email (Uneditable):
+                </label>
+                <input
+                  {...register("email", {
+                    required: true,
+                    pattern: /^\S+@\S+$/i,
+                  })}
+                  type="tel"
+                  id="email"
+                  className="user-input"
+                  name="email"
+                  readOnly
+                ></input>
+              </li>
+
+              <li className="form-row-left">
+                <label forhtml="phoneNumber" className="user-input-label">
+                  Phone:
+                </label>
+                <input
+                  type="tel"
+                  {...register("phoneNumber", {
+                    required: true,
+                    minLength: {
+                      value: 12,
+                      message:
+                        "Phone number is too short. Must be 12 characters.",
+                    },
+                    maxLength: {
+                      value: 12,
+                      message:
+                        "Phone number is too long. Must be 12 characters",
+                    },
+                  })}
+                  id="phoneNumber"
+                  className="user-input"
+                  name="phoneNumber"
+                ></input>
+              </li>
+
+              <li className="form-row-left">
+                <button className="submit" type="submit">
+                  Update Data
+                </button>
+              </li>
+            </ul>
+          </form>
+          <DeleteUser />
+        </Col>
+        <Col>
+          <ul>
+            <ErrorMessage
+              errors={errors}
+              name="firstName"
+              render={({ messages }) => {
+                console.log("messages", messages);
+                return messages
+                  ? _.entries(messages).map(([type, message]) => (
+                      <>
+                        <li className="form-row-right">
+                          <p className="inputError" key={type}>
+                            {message}
+                          </p>
+                        </li>
+                      </>
+                    ))
+                  : null;
+              }}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="lastName"
+              render={({ messages }) => {
+                console.log("messages", messages);
+                return messages
+                  ? _.entries(messages).map(([type, message]) => (
+                      <>
+                        <li className="form-row-right">
+                          <p className="inputError" key={type}>
+                            {message}
+                          </p>
+                        </li>
+                      </>
+                    ))
+                  : null;
+              }}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="phoneNumber"
+              render={({ messages }) => {
+                console.log(messages);
+                return messages
+                  ? _.entries(messages).map(([type, message]) => (
+                      <>
+                        <li className="form-row-right">
+                          <p className="inputError" key={type}>
+                            {message}
+                          </p>
+                        </li>
+                      </>
+                    ))
+                  : null;
+              }}
+            />
+          </ul>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export const User = () => {
   const UPDATE_USER = gql`
     mutation ($input: UsersUpdateInput!) {
       updateUser(input: $input)
     }
   `;
   const GET_USER = gql`
-    query ($id: Int!) {
-      getUser(id: $id) {
+    query ($email: String!) {
+      getUser(email: $email) {
         firstName
         lastName
         email
@@ -20,101 +187,31 @@ export function UserInfoForm() {
       }
     }
   `;
+  const { user } = useAuth0();
+  console.log(user);
+  const { data } = useQuery(GET_USER, { variables: { email: user.email } });
 
-  const userData = useQuery(GET_USER, {variables: {id: 4}});
-
-  const [updateUser] = useMutation(UPDATE_USER, {
-    variables: {
-      input: {
-        id: 4,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        phoneNumber: userData.phoneNumber,
-        email: userData.email,
-      },
-    },
-  });
-
-  const handleSubmit = async (e) => {
-    try{
-      e.preventDefault();
-      const { firstName, lastName, phone, email } = e.target.elements;
-      await updateUser({
+  const [mutateAsync] = useMutation(UPDATE_USER);
+  const handleSubmit = async (data) => {
+    try {
+      await mutateAsync({
         variables: {
           input: {
-            id: 4,
-            firstName: firstName.value,
-            lastName: lastName.value,
-            phoneNumber: phone.value,
-            email: email.value,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phoneNumber: data.phoneNumber,
+            email: data.email,
           },
         },
       });
-      ToastSuccess("Successfully Updated!");
-    }catch(e){
-      ToastError('Failed to Update User.')
+      ToastSuccess("Successfully Updated User!");
+    } catch (e) {
+      ToastError("Failed to Update User.");
       console.log(e);
     }
   };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        Ï
-        <ul className="wrapper">
-          <li className="form-row">
-            <label forhtml="firstName" className="user-input-label">
-              First Name:
-            </label>
-            <input
-              id="firstName"
-              className="user-input"
-              name="firstName"
-              defaultValue={userData.firstName}
-            ></input>
-          </li>
+  if (!data) return <div>loading state</div>;
 
-          <li className="form-row">
-            <label forhtml="lastName" className="user-input-label">
-              Last Name:
-            </label>
-            <input
-              id="lastName"
-              className="user-input"
-              name="firstLast"
-              defaultValue={userData.lastName}
-            ></input>
-          </li>
-
-          <li className="form-row">
-            <label forhtml="email" className="user-input-label">
-              Email:
-            </label>
-            <input
-              id="email"
-              className="user-input"
-              name="email"
-              defaultValue={userData.email || ""}
-            ></input>
-          </li>
-
-          <li className="form-row">
-            <label forhtml="phone" className="user-input-label">
-              Phone:
-            </label>
-            <input
-              id="phone"
-              className="user-input"
-              name="phone"
-              defaultValue={userData.phone || ""}
-            ></input>
-          </li>
-          <li className="form-row">
-            <button className="submit" type="submit">Update Data</button>
-          </li>
-        </ul>
-      </form>
-      <ToastSuccessContainer />
-    </>
-  );
-}
+  return <UserForm user={data.getUser} onSubmit={handleSubmit} />;
+};
