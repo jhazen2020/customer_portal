@@ -35,7 +35,7 @@ export function UsersList({
                   <td>{item.firstName}</td>
                   <td>{item.lastName}</td>
                   <td>{item.email}</td>
-                  <td>{item.phone}</td>
+                  <td>{item.phoneNumber}</td>
                 </tr>
               );
             })}
