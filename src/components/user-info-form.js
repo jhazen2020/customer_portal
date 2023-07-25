@@ -77,8 +77,8 @@ const UserForm = ({ user, onSubmit }) => {
                 </label>
                 <input
                   type="tel"
+                  placeholder="+1235551234"
                   {...register("phoneNumber", {
-                    required: true,
                     minLength: {
                       value: 12,
                       message:
@@ -199,7 +199,7 @@ export const User = () => {
           input: {
             firstName: data.firstName,
             lastName: data.lastName,
-            phoneNumber: data.phoneNumber,
+            phoneNumber: data.phoneNumber === "" ? null : data.phoneNumber,
             email: data.email,
           },
         },
