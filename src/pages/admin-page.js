@@ -19,9 +19,9 @@ export const AdminPage = () => {
         <div className="content__body">
           <p id="page-description">
             <span>
-              This page allows an admin to view all users. No user will see your actual information. 
-              Each person on the list will show up with fake user data except the user that is the same
-              as the logged in user.
+              This page allows a user to view all users with masked data (fake data from a cache placed over real data to protect your information).
+              You are the only one that can see your information. The placement of user in the list will always be correct. Along with the number of
+              actual users in the database.
             </span>
           </p>
           {user.email_verified ? <CodeSnippet

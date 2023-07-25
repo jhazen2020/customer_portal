@@ -39,15 +39,7 @@ export const PublicPage = () => {
           About Me.
         </h1>
         <div className="content__body">
-          <p id="page-description">
-            <span>
-              About.
-            </span>
-            <span>
-              <strong>About me.</strong>
-            </span>
-          </p>
-          <CodeSnippet title="Public Message" />
+          <CodeSnippet title="About Me" />
         </div>
       </div>
     </PageLayout>

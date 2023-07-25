@@ -14,14 +14,14 @@ export const MobileNavBarTabs = ({ handleClick }) => {
       />
       <MobileNavBarTab
         path="/public"
-        label="Public"
+        label="About Me"
         handleClick={handleClick}
       />
       {isAuthenticated && (
         <>
           <MobileNavBarTab
             path="/admin"
-            label="Admin"
+            label="Users"
             handleClick={handleClick}
           />
         </>
