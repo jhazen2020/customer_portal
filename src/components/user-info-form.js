@@ -15,8 +15,8 @@ const UserForm = ({ user, onSubmit }) => {
   } = useForm({ defaultValues: user, criteriaMode: "all" });
   return (
     <Container>
-      <Row>
-        <Col>
+      <Row className="rowStyle">
+        <Col sm={4}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ul className="wrapper">
               <li className="form-row-left">
@@ -97,15 +97,19 @@ const UserForm = ({ user, onSubmit }) => {
               </li>
 
               <li className="form-row-left">
-                <button className="submit" type="submit">
-                  Update Data
-                </button>
+                <div className="container-submit-button">
+                  <div className="btn-holder">
+                    <button className="submit" type="submit">
+                      Update Data
+                    </button>
+                  </div>
+                </div>
               </li>
             </ul>
           </form>
           <DeleteUser />
         </Col>
-        <Col>
+        <Col sm={8}>
           <ul>
             <ErrorMessage
               errors={errors}

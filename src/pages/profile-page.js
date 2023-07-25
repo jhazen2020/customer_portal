@@ -17,7 +17,7 @@ export const ProfilePage = () => {
     <p>
       <span>
         <strong>
-          Email has not been verified. Please check your email inbox.
+          Your email has not been verified. Please check your email inbox.
         </strong>
       </span>
     </p>
@@ -35,14 +35,13 @@ export const ProfilePage = () => {
         <div className="content__body">
           <p id="page-description">
             <span>
-              Here you can update your user information. There are some front
-              end and server side validation for inputs. Deleting your user will
-              remove it from Auth0 and the server side database. This will log
-              you out. You may sign up again if you wish.
+              Here you can update your user information. There are some frontend
+              and server side validation for inputs. You can not update your
+              email. Deleting your user will remove it from Auth0 and the server
+              side database. This action will log you out.
             </span>
             <span>
-              <strong>Only logged in users can access this page.</strong>
-              {emaiVerified}
+              <strong>{emaiVerified}</strong>
             </span>
           </p>
           <div className="profile-grid">
@@ -58,11 +57,14 @@ export const ProfilePage = () => {
               </div>
             </div>
             <div className="profile__details">
-            {user.email_verified ? <CodeSnippet
-                title="Update Your Profile Information."
-                snippetId="profile"
-              /> :
-              <div></div>}
+              {user.email_verified ? (
+                <CodeSnippet
+                  title="Profile Information"
+                  snippetId="profile"
+                />
+              ) : (
+                <div></div>
+              )}
               <ToastSuccessContainer />
             </div>
           </div>

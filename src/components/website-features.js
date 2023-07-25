@@ -4,27 +4,27 @@ import { WebsiteFeature } from "./website-feature";
 export const WebsiteFeatures = () => {
   const featuresList = [
     {
-      title: "Sign Up as a user",
+      title: "Sign up",
       description:
-        "Feel free to sign up with SSO or create a login manually. You will be sent a verification email if you sign up manually.",
+        "Feel free to sign up with SSO or create a login manually. You will be sent a verification email if you sign up manually. No one but me can see any of your information. Even if that is not okay, feel free to sign up with a fake email.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/identity-providers-logo.svg",
     },
     {
-      title: "Manage Users as an admin",
+      title: "User management",
       description:
-        "Please contact me if you would like credentials of an admin user or want your own login upgraded. This will only be given if we are in the middle of the interview process.",
+        "You can edit your personal information or view a list of users. Each user that signs up will be represented by fake data except for the user that is logged in.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/private-cloud-logo.svg",
     },
     {
       title: "Authentication",
       description:
-        "User identiy is authenticated when a user verify's their email after signup. The verification is done automatically if a user uses SSO.",
+        "A User's identity is verified automatically if a user uses SSO (Single Sign On). Non-SSO user creation requires email verification that will be sent to your email to gain full access. Your data will persist once you have been verified.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/mfa-logo.svg",
     },
     {
       title: "Authorization",
       description:
-        "Protected areas such as the admin and protected tab require users to be marked an admins. These tabs at the top will be hidden unless the user has the required access.",
+        "Protected areas such as the Users and Profile tab requires a login to function fully. Authorization is used on the frontend and backend.",
         icon: "https://cdn.auth0.com/blog/hello-auth0/advanced-protection-logo.svg",
     },
   ];

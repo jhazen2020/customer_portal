@@ -8,10 +8,10 @@ export const NavBarTabs = () => {
   return (
     <div className="nav-bar__tabs">
       <NavBarTab path="/profile" label="Profile" />
-      <NavBarTab path="/public" label="Public" />
+      <NavBarTab path="/public" label="About Me" />
       {isAuthenticated && (
         <>
-          <NavBarTab path="/admin" label="Admin" />
+          <NavBarTab path="/admin" label="Users" />
         </>
       )}
     </div>

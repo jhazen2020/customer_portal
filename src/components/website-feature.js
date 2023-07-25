@@ -1,10 +1,8 @@
 import React from "react";
 
 export const WebsiteFeature = ({ title, description, icon }) => (
-  <a
-    className="website-feature"
-    target="_blank"
-    rel="noopener noreferrer"
+  <span
+    
   >
     <h3 className="website-feature__headline">
       <img
@@ -15,5 +13,5 @@ export const WebsiteFeature = ({ title, description, icon }) => (
       {title}
     </h3>
     <p className="website-feature__description">{description}</p>
-  </a>
+  </span>
 );
