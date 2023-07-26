@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
@@ -6,8 +7,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DeleteUser } from "./buttons/delete-user-button";
 import { ToastSuccess, ToastError } from "./toast";
 import { useAuth0 } from "@auth0/auth0-react";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 const UserForm = ({ user, onSubmit }) => {
+  const [phoneNumber, setValue] = useState(user.phoneNumber);
   const {
     register,
     handleSubmit,
@@ -75,25 +79,27 @@ const UserForm = ({ user, onSubmit }) => {
                 <label forhtml="phoneNumber" className="user-input-label">
                   Phone:
                 </label>
-                <input
-                  type="tel"
-                  placeholder="+1235551234"
-                  {...register("phoneNumber", {
+                <PhoneInput
+                  defaultCountry="US"
+                  {...register(
+                    "phoneNumber",
+                  {
                     minLength: {
-                      value: 12,
+                      value: 14,
                       message:
-                        "Phone number is too short. Must be 12 characters.",
+                        "Phone number is too short. Must be 14 characters.",
                     },
                     maxLength: {
-                      value: 12,
+                      value: 14,
                       message:
-                        "Phone number is too long. Must be 12 characters",
+                        "Phone number is too long. Must be 14 characters",
                     },
                   })}
                   id="phoneNumber"
-                  className="user-input"
-                  name="phoneNumber"
-                ></input>
+                  value={phoneNumber}
+                  onChange={setValue}
+                  maxlength="14"
+                ></PhoneInput>
               </li>
 
               <li className="form-row-left">
@@ -203,7 +209,7 @@ export const User = () => {
           input: {
             firstName: data.firstName,
             lastName: data.lastName,
-            phoneNumber: data.phoneNumber === "" ? null : data.phoneNumber,
+            phoneNumber: data.phoneNumber === "" ? null : '+1' + data.phoneNumber.replace(/[^\d\+]/g,''),
             email: data.email,
           },
         },

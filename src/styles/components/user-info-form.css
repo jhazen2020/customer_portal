@@ -1,3 +1,7 @@
+.PhoneInputInput {
+  color: white;
+  background-color: var(--dark-aluminium);
+}
 .user-input-label {
   color: white;
 }
