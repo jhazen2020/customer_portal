@@ -19,16 +19,18 @@ export const AdminPage = () => {
         <div className="content__body">
           <p id="page-description">
             <span>
-              This page allows a user to view all users with masked data (fake data from a cache placed over real data to protect your information).
-              You are the only one that can see your information. The placement of user in the list will always be correct. Along with the number of
-              actual users in the database.
+              This page allows a user to view all users with masked data (fake
+              data from a cache placed over real data to protect your
+              information). You are the only one that can see your real data.
             </span>
           </p>
-          {user.email_verified ? <CodeSnippet
-                title="Users List"
-                snippetId="users_list"
-              /> :
-              <div><span>Please Verify your email to see the users' list.</span></div>}
+          {user.email_verified ? (
+            <CodeSnippet title="Users List" snippetId="users_list" />
+          ) : (
+            <div>
+              <span>Please Verify your email to see the users' list.</span>
+            </div>
+          )}
         </div>
       </div>
     </PageLayout>
