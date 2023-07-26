@@ -7,11 +7,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DeleteUser } from "./buttons/delete-user-button";
 import { ToastSuccess, ToastError } from "./toast";
 import { useAuth0 } from "@auth0/auth0-react";
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input/input";
 
 const UserForm = ({ user, onSubmit }) => {
-  const [phoneNumber, setValue] = useState(user.phoneNumber);
+  const [value, setValue] = useState(
+    "+1" + user.phoneNumber.replace(/[^\d\+]/g, "")
+  );
   const {
     register,
     handleSubmit,
@@ -80,10 +82,9 @@ const UserForm = ({ user, onSubmit }) => {
                   Phone:
                 </label>
                 <PhoneInput
-                  defaultCountry="US"
-                  {...register(
-                    "phoneNumber",
-                  {
+                  country="US"
+                  className="user-input"
+                  {...register("phoneNumber", {
                     minLength: {
                       value: 14,
                       message:
@@ -96,9 +97,9 @@ const UserForm = ({ user, onSubmit }) => {
                     },
                   })}
                   id="phoneNumber"
-                  value={phoneNumber}
+                  value={value}
                   onChange={setValue}
-                  maxlength="14"
+                  maxLength="14"
                 ></PhoneInput>
               </li>
 
@@ -209,7 +210,10 @@ export const User = () => {
           input: {
             firstName: data.firstName,
             lastName: data.lastName,
-            phoneNumber: data.phoneNumber === "" ? null : '+1' + data.phoneNumber.replace(/[^\d\+]/g,''),
+            phoneNumber:
+              data.phoneNumber === ""
+                ? null
+                : "+1" + data.phoneNumber.replace(/[^\d\+]/g, ""),
             email: data.email,
           },
         },
@@ -223,5 +227,14 @@ export const User = () => {
 
   if (!data) return <div>loading state</div>;
 
-  return <UserForm user={data.getUser} onSubmit={handleSubmit} />;
+  const userData = { ...data.getUser };
+  if (data.getUser.phoneNumber) {
+    const phoneNumberBase = data.getUser.phoneNumber.slice(2);
+    const prefix = phoneNumberBase.slice(0, 3);
+    const middle = phoneNumberBase.slice(3, 6);
+    const end = phoneNumberBase.slice(6, 10);
+    userData.phoneNumber = `(${prefix}) ${middle}-${end}`;
+  }
+
+  return <UserForm user={userData} onSubmit={handleSubmit} />;
 };
