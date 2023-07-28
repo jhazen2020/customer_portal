@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import _ from "lodash";
 import { Container, Row, Col } from "react-bootstrap";
-import { DeleteUser } from "./buttons/delete-user-button";
+// import { DeleteUser } from "./buttons/delete-user-button";
 import { ToastSuccess, ToastError } from "./toast";
 import { useAuth0 } from "@auth0/auth0-react";
 import "react-phone-number-input/style.css";
@@ -114,7 +114,7 @@ const UserForm = ({ user, onSubmit }) => {
               </li>
             </ul>
           </form>
-          <DeleteUser />
+          {/* <DeleteUser /> */}
         </Col>
         <Col sm={8}>
           <ul>

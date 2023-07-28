@@ -13,9 +13,6 @@ export const AdminPage = () => {
   return (
     <PageLayout>
       <div className="content-layout">
-        <h1 id="page-title" className="content__title">
-          Admin Page
-        </h1>
         <div className="content__body">
           <p id="page-description">
             <span>

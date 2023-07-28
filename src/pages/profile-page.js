@@ -29,16 +29,12 @@ export const ProfilePage = () => {
   return (
     <PageLayout>
       <div className="content-layout">
-        <h1 id="page-title" className="content__title">
-          Profile Page
-        </h1>
         <div className="content__body">
           <p id="page-description">
             <span>
               Here you can update your user information. There are some frontend
               and server side validation for inputs. You can not update your
-              email. Deleting your user will remove it from Auth0 and the server
-              side database. This action will log you out.
+              email.
             </span>
             <span>
               <strong>{emaiVerified}</strong>
