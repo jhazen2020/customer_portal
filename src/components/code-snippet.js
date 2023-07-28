@@ -24,7 +24,8 @@ export const CodeSnippet = ({ title, snippetId = null }) => {
       </p>
       <p>
         Feel free to{" "}
-        <a
+        <a 
+          className="a-tag-for-about-me"
           href="https://www.linkedin.com/in/jesse-hazen-36a207234/"
           target="_blank"
         >

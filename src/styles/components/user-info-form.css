@@ -1,20 +1,22 @@
 .PhoneInputInput {
-  color: white;
-  background-color: var(--dark-aluminium);
+  color: black;
+  background-color: var(--off-white);
 }
 .user-input-label {
-  color: white;
+  color: black;
 }
 .user-input {
-  color: white;
-  background-color: var(--dark-aluminium);
+  color: black;
+  background-color: lightgrey;
   margin-left: 0.5em;
   size: 50;
   left: 85;
   list-style-type: none;
   padding: 0;
   border-radius: 3px;
+  border-color: lightgrey;
   width: 100%;
+  padding-left: 5px;
 }
 
 .form {
@@ -44,8 +46,9 @@
   flex: 2;
 }
 .submit {
-  color: white;
-  background: black;
+  color: black;
+  background: lightgrey;
+  border-color: lightgrey;
 }
 .container-user-delete-button .btn-holder {
   justify-content: flex-end;

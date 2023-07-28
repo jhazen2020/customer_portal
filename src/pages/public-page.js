@@ -35,9 +35,6 @@ export const PublicPage = () => {
   return (
     <PageLayout>
       <div className="content-layout">
-        <h1 id="page-title" className="content__title">
-          About Me.
-        </h1>
         <div className="content__body">
           <CodeSnippet title="About Me" />
         </div>

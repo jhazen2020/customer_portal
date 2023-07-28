@@ -27,7 +27,7 @@
 
 .code-snippet__container {
   min-height: 32.4rem;
-  background-color: var(--dark-aluminium);
+  background-color: var(--off-white);
   overflow-x: auto;
 }
 
@@ -39,11 +39,15 @@
 .code-snippet__body {
   margin: 0;
 
-  color: var(--white);
+  color: black;
   font-size: 16px;
   line-height: 32px;
   word-wrap: break-word;
   white-space: pre-wrap;
+}
+
+.a-tag-for-about-me{
+  color: blue;
 }
 
 @media only screen and (max-width: 480px) {
