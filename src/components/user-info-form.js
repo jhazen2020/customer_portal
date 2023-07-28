@@ -88,12 +88,12 @@ const UserForm = ({ user, onSubmit }) => {
                     minLength: {
                       value: 14,
                       message:
-                        "Phone number is too short. Must be 14 characters.",
+                        "Phone number is too short. Must be 10 characters.",
                     },
                     maxLength: {
                       value: 14,
                       message:
-                        "Phone number is too long. Must be 14 characters",
+                        "Phone number is too long. Must be 10 characters",
                     },
                   })}
                   id="phoneNumber"
