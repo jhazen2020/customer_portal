@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./app";
 import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
-import { ApolloProvider } from "@apollo/client";
-import { client } from "./components/apollo-client"
+import Provider from "./components/apollo-client";
 
 import "./styles/styles.css";
 const container = document.getElementById("root");
@@ -14,9 +13,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0ProviderWithNavigate>
-        <ApolloProvider client={client}>
+        <Provider>
           <App />
-        </ApolloProvider>
+        </Provider>
       </Auth0ProviderWithNavigate>
     </BrowserRouter>
   </React.StrictMode>
