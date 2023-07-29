@@ -1,10 +1,6 @@
 .profile-grid {
   display: flex;
   flex-direction: column;
-
-  /* responsive */
-
-  margin-top: 48px;
 }
 
 .profile__header {
@@ -34,12 +30,6 @@
   margin-bottom: 0;
 
   color: var(--white);
-}
-
-.profile__details {
-  /* responsive */
-
-  margin-top: 32px;
 }
 
 @media only screen and (max-width: 480px) {

@@ -60,7 +60,7 @@ export function UsersListData() {
   const [count, setCount] = useState([0]);
   const [dataUsers, setDataUsers] = useState([]);
   const GET_USERS_LIST = gql`
-    query ($input: UsersList!) {
+    query ($input: UsersListInput!) {
       getAllUsers(input: $input)
     }
   `;
