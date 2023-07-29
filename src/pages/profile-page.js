@@ -5,7 +5,7 @@ import { PageLayout } from "../components/page-layout";
 import { ToastSuccessContainer } from "../components/toast";
 
 export const ProfilePage = () => {
-  const { user, getAccessTokenSilently } = useAuth0();
+  const { user } = useAuth0();
 
   if (!user) {
     return null;
@@ -22,9 +22,6 @@ export const ProfilePage = () => {
       </span>
     </p>
   );
-  getAccessTokenSilently().then((accessToken) => {
-    localStorage.setItem("token", accessToken);
-  });
 
   return (
     <PageLayout>
