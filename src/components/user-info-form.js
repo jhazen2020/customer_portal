@@ -122,7 +122,6 @@ const UserForm = ({ user, onSubmit }) => {
               errors={errors}
               name="firstName"
               render={({ messages }) => {
-                console.log("messages", messages);
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
@@ -140,7 +139,6 @@ const UserForm = ({ user, onSubmit }) => {
               errors={errors}
               name="lastName"
               render={({ messages }) => {
-                console.log("messages", messages);
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
@@ -158,7 +156,6 @@ const UserForm = ({ user, onSubmit }) => {
               errors={errors}
               name="phoneNumber"
               render={({ messages }) => {
-                console.log(messages);
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
@@ -199,7 +196,6 @@ export const User = () => {
     }
   `;
   const { user } = useAuth0();
-  console.log(user);
   const { data } = useQuery(GET_USER, { variables: { email: user.email } });
 
   const [mutateAsync] = useMutation(UPDATE_USER);
@@ -221,7 +217,6 @@ export const User = () => {
       ToastSuccess("Successfully Updated User!");
     } catch (e) {
       ToastError("Failed to Update User.");
-      console.log(e);
     }
   };
 

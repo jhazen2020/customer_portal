@@ -21,7 +21,6 @@ export default function Provider({
     
     const authLink = setContext(async (_, { headers }) => { 
       const token = await getAccessTokenSilently();    
-      console.log('token:', token);   
       
       return {
         headers: {
