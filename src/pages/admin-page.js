@@ -14,13 +14,6 @@ export const AdminPage = () => {
     <PageLayout>
       <div className="content-layout">
         <div className="content__body">
-          <p id="page-description">
-            <span>
-              This page allows a user to view all users with masked data (fake
-              data from a cache placed over real data to protect your
-              information). You are the only one that can see your real data.
-            </span>
-          </p>
           {user.email_verified ? (
             <CodeSnippet title="Users List" snippetId="users_list" />
           ) : (

@@ -27,16 +27,6 @@ export const ProfilePage = () => {
     <PageLayout>
       <div className="content-layout">
         <div className="content__body">
-          <p id="page-description">
-            <span>
-              Here you can update your user information. There are some frontend
-              and server side validation for inputs. You can not update your
-              email.
-            </span>
-            <span>
-              <strong>{emaiVerified}</strong>
-            </span>
-          </p>
           <div className="profile-grid">
             <div className="profile__details">
               {user.email_verified ? (
