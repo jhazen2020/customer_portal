@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const logo = "https://djkmbr0egwze9.cloudfront.net/JH.svg";
+const logo = "https://djkmbr0egwze9.cloudfront.net/jh_logo.svg";
 export const MobileNavBarBrand = ({ handleClick }) => {
   return (
     <div onClick={handleClick} className="mobile-nav-bar__brand">
