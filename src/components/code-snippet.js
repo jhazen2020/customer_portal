@@ -6,7 +6,7 @@ export const CodeSnippet = ({ title, snippetId = null }) => {
   let body = (
     <pre className="code-snippet__body">
       <p>
-        Jesse Hazen is software engineer with experience taking other peoples
+        A software engineer with experience taking other peoples
         dreams and turning them into reality. This has been done while collaborating
         on a team and working on solo projects. His deep desire for correctness
         in the code and data enables those around him to succeed as well.
@@ -14,7 +14,7 @@ export const CodeSnippet = ({ title, snippetId = null }) => {
         also tenacity when things become difficult.
       </p>
       <p>
-        Jesse has contributed to various SaaS
+        Contributed to various SaaS
         (software as a service) products over the past 10 years, enjoying nearly
         every step along the way to become the best engineer he can be. A couple
         examples are working on complex survey systems and social network
