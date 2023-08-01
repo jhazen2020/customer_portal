@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const logo = "https://djkmbr0egwze9.cloudfront.net/JH.svg";
+const logo = "https://djkmbr0egwze9.cloudfront.net/jh_logo.svg";
 export const NavBarBrand = () => {
   return (
     <div className="nav-bar__brand">
