@@ -10,7 +10,9 @@ export const HeroBanner = () => {
           FINDING THE RIGHT PERSON WITH THE RIGHT SKILLS.
         </h1>
         <div className="hero-banner__description">
-          <p>This task can be difficult but I hope this website will demonstrate that Jesse Hazen is who you are looking for. </p>
+          <p>This task can be difficult, but you came to the right place. This website will demonstrate some software engineering
+            skills possessed by Jesse Hazen. Possible your next hire, so check this out and give him a call.
+          </p>
           <p>
           This Single Page
           Application is powered by AWS, React, Typescript, NestJs, Graphql,
