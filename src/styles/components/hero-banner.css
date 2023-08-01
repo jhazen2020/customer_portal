@@ -5,7 +5,9 @@
 
   width: 100%;
   color: var(--black);
-
+  background-image: url(https://djkmbr0egwze9.cloudfront.net/hero-background.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
   /* responsive */
 
   margin: 0 auto;
@@ -86,7 +88,7 @@
   line-height: 3.2rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 992px) {
   .hero-banner-right {
     display: none;
   }

@@ -5,7 +5,7 @@ export const HeroBanner = () => {
   const logo = "https://djkmbr0egwze9.cloudfront.net/640-office-view.jpg";
   return (
     <Row className="hero-banner hero-banner--blue-aqua">
-      <Col className="hero-banner-left" sm={5}>
+      <Col className="hero-banner-left" sm={12} md={12} lg={5}>
         <h1 className="hero-banner__headline">
           FINDING THE RIGHT PERSON WITH THE RIGHT SKILLS.
         </h1>
@@ -18,7 +18,7 @@ export const HeroBanner = () => {
           </p>
         </div>
       </Col>
-      <Col className="hero-banner-right" sm={7}>
+      <Col className="hero-banner-right" lg={7}>
         <a
           href="https://www.linkedin.com/in/jesse-hazen-36a207234/"
           target="_blank"

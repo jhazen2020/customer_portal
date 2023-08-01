@@ -7,14 +7,14 @@
 }
 .user-input {
   color: black;
-  background-color: lightgrey;
+  background-color: whitesmoke;
   margin-left: 0.5em;
   size: 50;
   left: 85;
   list-style-type: none;
   padding: 0;
-  border-radius: 3px;
-  border-color: lightgrey;
+  border-radius: 1px;
+  border-color: whitesmoke;
   width: 100%;
   padding-left: 5px;
 }
@@ -47,8 +47,8 @@
 }
 .submit {
   color: black;
-  background: lightgrey;
-  border-color: lightgrey;
+  background: whitesmoke;
+  border-color: whitesmoke;
 }
 .container-user-delete-button .btn-holder {
   justify-content: flex-end;
