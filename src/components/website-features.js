@@ -6,25 +6,25 @@ export const WebsiteFeatures = () => {
     {
       title: "Sign up",
       description:
-        "Feel free to sign up with SSO (Single Sign On) or create a login manually. You will be sent a verification email if you sign up manually. Feel free to create a fake email to login with if you prefer.",
+        "Feel free to sign up with SSO (Single Sign On) or sign up manually.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/identity-providers-logo.svg",
     },
     {
       title: "User management",
       description:
-        "You can edit your personal information or view a list of users. No other user can see your data in the users list",
+        "You can edit your own personal information or view a list of users. No other user can see your information",
       icon: "https://cdn.auth0.com/blog/hello-auth0/private-cloud-logo.svg",
     },
     {
       title: "Authentication",
       description:
-        "A User's identity is verified automatically if a user uses SSO (Single Sign On). Non-SSO user creation requires an email verification that will be sent to your email.",
+        "A User's identity is verified automatically if a user uses SSO (Single Sign On). A verification email will be sent if the user does not use SSO.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/mfa-logo.svg",
     },
     {
       title: "Authorization",
       description:
-        "Protected areas such as the Users and Profile tab requires a login to function fully. Authorization is used in the browser and servers.",
+        "The Users and Profile tab requires a login to fully function. This access is controlled in the browser and backend servers.",
       icon: "https://cdn.auth0.com/blog/hello-auth0/advanced-protection-logo.svg",
     },
   ];
