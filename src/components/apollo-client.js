@@ -3,12 +3,22 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  from,
   createHttpLink
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import { useAuth0 } from '@auth0/auth0-react';
 
+/**
+ * This is the component for the apollo client. Any calls to the apollo client 
+ * within this component will use the set configuration.
+ * @date 7/31/2023 - 3:23:14 PM
+ *
+ * @export
+ * @param {{ children: any; }} {
+  children,
+}
+ * @returns {*}
+ */
 export default function Provider({
   children,
 }){

@@ -31,7 +31,6 @@ export const WebsiteFeatures = () => {
 
   return (
     <div className="website-features">
-      <h2 className="website-features__title">Explore Auth0 Features</h2>
       <div className="website-features__grid">
         {featuresList.map((feature) => (
           <WebsiteFeature
