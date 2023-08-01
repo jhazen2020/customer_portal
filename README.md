@@ -5,22 +5,27 @@ This repo (https://github.com/jhazen2020/customer_portal) houses the front end c
 ## Development setup
 
 1. You will need to create an Auth0 account. @todo will create terraform for this so it's easy for someone.
-2. Install git. 
-3. Install nvm (node version manager). Install version specified in package.json.
-4. Install Docker Desktop.
-5. Install docker compose.
-6. Copy the '.env.example' file to '.env'. Add variable values.
-7. Run docker compose for the 'docker-compose.dev.yml'. docker-compose -f docker-compose.dev.yml up
+1. Install git. 
+1. Install nvm (node version manager). Install version specified in package.json.
+1. Install Docker Desktop.
+1. Install docker compose.
+1. Copy the '.env.example' file to '.env'. Add variable values.
+1. Run docker compose for the 'docker-compose.dev.yml'. docker-compose -f docker-compose.dev.yml up
 
 ## Future work
 
-This repos still needs a lot of work:
+This repos still needs work:
 1. Create unit tests.
-2. Comments through the code.
-3. Verify that the Auth token is appropriately updating.
-4. Logout when inactive.
-5. Add CI/CD on merge.
-6. Add tests to the CI/CD.
+1. Comments through the code.
+1. Verify that the Auth token is appropriately updating.
+1. Logout when inactive.
+1. Add CI/CD on merge.
+1. Add tests to the CI/CD.
+1. install serve or other SPA web server.  use yarn build, and new web server on .env port.
+1. convert design to MUI (material ui) for consistent UI look.
+1. Add server side errors to show in the Toast errors. Server side validation for phone is more specific since it checks
+   for a valid area code.
+1. add redux for better state handling.
 
 
 
