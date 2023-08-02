@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start-dev": "PORT=4040 react-scripts start",
-    "start": "HTTPS=true SSL_CRT_FILE=./.cert/servercert.pem SSL_KEY_FILE=./.cert/serverkey.pem PORT=4040 react-scripts start",
+    "start": "HTTPS=true SSL_CRT_FILE=./.cert/servercert.pem SSL_KEY_FILE=./.cert/serverkey.pem PORT=443 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
