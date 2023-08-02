@@ -11,7 +11,7 @@ export const HeroBanner = () => {
         </h1>
         <div className="hero-banner__description">
           <p>This task can be difficult, but you came to the right place. This website will demonstrate some software engineering
-            skills possessed by Jesse Hazen. Possible your next hire, so check this out and give him a call.
+            skills possessed by Jesse Hazen. Possibly your next hire, so check this out and give him a call.
           </p>
           <p>
           This Single Page
