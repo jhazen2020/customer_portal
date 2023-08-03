@@ -9,6 +9,7 @@ import { ToastSuccess, ToastError } from "./toast";
 import { useAuth0 } from "@auth0/auth0-react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input/input";
+import debounce from "../utils/debounce";
 
 const UserForm = ({ user, onSubmit }) => {
   const [value, setValue] = useState(
@@ -196,12 +197,18 @@ export const User = () => {
     }
   `;
   const { user } = useAuth0();
-  const { data } = useQuery(GET_USER, { variables: { email: user.email } });
+  const { data, error, loading } = useQuery(GET_USER, {
+    variables: { email: user.email },
+  });
 
-  const [mutateAsync] = useMutation(UPDATE_USER);
-  const handleSubmit = async (data) => {
+  const [mutateAsync] = useMutation(UPDATE_USER, {
+    onError: (e) => {
+      console.log(e);
+    }
+  });
+  const updateUser = async (data) => {
     try {
-      await mutateAsync({
+      const response = await mutateAsync({
         variables: {
           input: {
             firstName: data.firstName,
@@ -214,13 +221,25 @@ export const User = () => {
           },
         },
       });
-      ToastSuccess("Successfully Updated User!");
+      if(response.errors?.graphQLErrors[0]?.extensions?.originalError?.error){
+        ToastError(`${response.errors?.graphQLErrors[0].extensions.originalError.error}: 
+          ${response.errors?.graphQLErrors[0].extensions.originalError.message[0]}` );
+      }else{
+        ToastSuccess("Successfully Updated User!");
+      }
     } catch (e) {
       ToastError("Failed to Update User.");
     }
   };
 
-  if (!data) return <div>loading state</div>;
+  if (loading) return <div>Loading Profile</div>;
+  if (error)
+    return (
+      <div>
+        An error has occurred while retrieving the user profile. Please login
+        again, Your login has expired.
+      </div>
+    );
 
   const userData = { ...data.getUser };
   if (data.getUser.phoneNumber) {
@@ -231,5 +250,5 @@ export const User = () => {
     userData.phoneNumber = `(${prefix}) ${middle}-${end}`;
   }
 
-  return <UserForm user={userData} onSubmit={handleSubmit} />;
+  return <UserForm user={userData} onSubmit={debounce(updateUser, 1000)} />;
 };

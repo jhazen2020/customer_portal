@@ -42,6 +42,7 @@ export function UsersList({
           </tbody>
         </table>
       </Row>
+      {currentTableData.length === 0 ? <Row>NO DATA. Please login again, your login has expired.</Row> : ''}
       <Row>
         <Pagination
           className="pagination-bar"
@@ -69,12 +70,12 @@ export function UsersListData() {
       getUsersCount
     }
   `;
-  const [getUsers] = useLazyQuery(GET_USERS_LIST);
-  const [getUsersCount] = useLazyQuery(GET_USERS_COUNT);
+  const [getUsers] = useLazyQuery(GET_USERS_LIST, {onError: (error)=>console.log(error.message)});
+  const [getUsersCount] = useLazyQuery(GET_USERS_COUNT, {onError: (error)=>console.log(error.message)});
   useMemo(async () => {
     async function fetchData() {
       const data = await getUsersCount();
-      setCount(data.data.getUsersCount);
+      setCount(data.data?.getUsersCount || 0);
     }
     fetchData();
   }, [currentPage]);
@@ -89,7 +90,7 @@ export function UsersListData() {
           },
         },
       });
-      setDataUsers(data.data.getAllUsers);
+      setDataUsers(data.data?.getAllUsers || []);
     }
     fetchData();
   }, [currentPage]);

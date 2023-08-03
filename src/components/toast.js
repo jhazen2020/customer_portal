@@ -27,7 +27,6 @@ export function ToastSuccessContainer(){
 
 const toastConfig = {
     position: "bottom-right",
-    autoClose: 2000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
@@ -43,7 +42,7 @@ const toastConfig = {
  * @param {*} message What is displayed on the toast.
  * @returns {*}
  */
-export const ToastSuccess = (message)=> toast.success(message, toastConfig);
+export const ToastSuccess = (message)=> toast.success(message, {...toastConfig, autoClose: 2000,});
 
 /**
  * Toast hook for an action error.
