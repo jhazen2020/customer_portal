@@ -12,7 +12,6 @@ import PhoneInput from "react-phone-number-input/input";
 import debounce from "../utils/debounce";
 
 const UserForm = ({ user, onSubmit }) => {
-  console.log(user.phoneNumber);
   const phoneValueInit = user.phoneNumber !==null
     ? "+1" + user.phoneNumber.replace(/[^\d\+]/g, "")
     : null;
