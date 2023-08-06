@@ -12,9 +12,11 @@ import PhoneInput from "react-phone-number-input/input";
 import debounce from "../utils/debounce";
 
 const UserForm = ({ user, onSubmit }) => {
-  const [value, setValue] = useState(
-    "+1" + user.phoneNumber.replace(/[^\d\+]/g, "")
-  );
+  console.log(user.phoneNumber);
+  const phoneValueInit = user.phoneNumber !==null
+    ? "+1" + user.phoneNumber.replace(/[^\d\+]/g, "")
+    : null;
+  const [value, setValue] = useState(phoneValueInit);
   const {
     register,
     handleSubmit,
@@ -26,7 +28,7 @@ const UserForm = ({ user, onSubmit }) => {
         <Col sm={4}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ul className="wrapper">
-              <li className="form-row-left">
+              <li className="form-row-left" key='first-name'>
                 <label forhtml="firstName" className="user-input-label">
                   First Name:
                 </label>
@@ -44,7 +46,7 @@ const UserForm = ({ user, onSubmit }) => {
                 ></input>
               </li>
 
-              <li className="form-row-left">
+              <li className="form-row-left"  key='last-name'>
                 <label forhtml="lastName" className="user-input-label">
                   Last Name:
                 </label>
@@ -61,7 +63,7 @@ const UserForm = ({ user, onSubmit }) => {
                   name="lastName"
                 ></input>
               </li>
-              <li className="form-row-left">
+              <li className="form-row-left"  key='email'>
                 <label forhtml="email" className="user-input-label">
                   Email (Uneditable):
                 </label>
@@ -78,7 +80,7 @@ const UserForm = ({ user, onSubmit }) => {
                 ></input>
               </li>
 
-              <li className="form-row-left">
+              <li className="form-row-left"  key='phone'>
                 <label forhtml="phoneNumber" className="user-input-label">
                   Phone:
                 </label>
@@ -104,7 +106,7 @@ const UserForm = ({ user, onSubmit }) => {
                 ></PhoneInput>
               </li>
 
-              <li className="form-row-left">
+              <li className="form-row-left"  key='submit'>
                 <div className="container-submit-button">
                   <div className="btn-holder">
                     <button className="submit" type="submit">
@@ -126,7 +128,7 @@ const UserForm = ({ user, onSubmit }) => {
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
-                        <li className="form-row-right">
+                        <li className="form-row-right" key="first-name-error">
                           <p className="inputError" key={type}>
                             {message}
                           </p>
@@ -143,7 +145,7 @@ const UserForm = ({ user, onSubmit }) => {
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
-                        <li className="form-row-right">
+                        <li className="form-row-right" key="last-name-error">
                           <p className="inputError" key={type}>
                             {message}
                           </p>
@@ -160,7 +162,7 @@ const UserForm = ({ user, onSubmit }) => {
                 return messages
                   ? _.entries(messages).map(([type, message]) => (
                       <>
-                        <li className="form-row-right">
+                        <li className="form-row-right" key="phone-error">
                           <p className="inputError" key={type}>
                             {message}
                           </p>
@@ -204,7 +206,7 @@ export const User = () => {
   const [mutateAsync] = useMutation(UPDATE_USER, {
     onError: (e) => {
       console.log(e);
-    }
+    },
   });
   const updateUser = async (data) => {
     try {
@@ -214,17 +216,17 @@ export const User = () => {
             firstName: data.firstName,
             lastName: data.lastName,
             phoneNumber:
-              data.phoneNumber === ""
+              data.phoneNumber === "" || data.phoneNumber === null
                 ? null
                 : "+1" + data.phoneNumber.replace(/[^\d\+]/g, ""),
             email: data.email,
           },
         },
       });
-      if(response.errors?.graphQLErrors[0]?.extensions?.originalError?.error){
+      if (response.errors?.graphQLErrors[0]?.extensions?.originalError?.error) {
         ToastError(`${response.errors?.graphQLErrors[0].extensions.originalError.error}: 
-          ${response.errors?.graphQLErrors[0].extensions.originalError.message[0]}` );
-      }else{
+          ${response.errors?.graphQLErrors[0].extensions.originalError.message[0]}`);
+      } else {
         ToastSuccess("Successfully Updated User!");
       }
     } catch (e) {
