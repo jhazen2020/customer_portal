@@ -4,6 +4,8 @@ import React, { useState, useMemo } from "react";
 import Pagination from "./pagination";
 import "../styles/components/users-list.css";
 import { Container, Row } from "react-bootstrap";
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 let PageSize = 10;
 
@@ -17,30 +19,30 @@ export function UsersList({
     <>
       <Container>
       <Row>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>FIRST NAME</th>
-              <th>LAST NAME</th>
-              <th>EMAIL</th>
-              <th>PHONE</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>FIRST NAME</Th>
+              <Th>LAST NAME</Th>
+              <Th>EMAIL</Th>
+              <Th>PHONE</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {currentTableData.map((item) => {
               return (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.firstName}</td>
-                  <td>{item.lastName}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phoneNumber}</td>
-                </tr>
+                <Tr key={item.id}>
+                  <Td>{item.id}</Td>
+                  <Td>{item.firstName}</Td>
+                  <Td>{item.lastName}</Td>
+                  <Td>{item.email}</Td>
+                  <Td>{item.phoneNumber}</Td>
+                </Tr>
               );
             })}
-          </tbody>
-        </table>
+          </Tbody>
+        </Table>
       </Row>
       {currentTableData.length === 0 ? <Row>NO DATA. Please login again, your login has expired.</Row> : ''}
       <Row>
